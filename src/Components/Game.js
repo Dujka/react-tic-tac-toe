@@ -68,6 +68,7 @@ export class Game extends Component {
     let status;
     if (this.state.weHaveAWinner != null)
       status = "Winner is: " + this.state.weHaveAWinner;
+    else if (this.state.stepNumber === 9) status = "It's a draw!";
     else status = "Next player: " + (this.state.xIsNext ? "X" : "O");
 
     const moves = history.map((step, move) => {
@@ -90,7 +91,7 @@ export class Game extends Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ul className="list">{moves}</ul>
         </div>
       </div>
     );

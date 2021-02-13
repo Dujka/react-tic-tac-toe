@@ -1,38 +1,120 @@
-.App {
+html,
+body {
+  height: 100vh;
+}
+.wrapper {
+  height: 100%;
+}
+.game {
+  padding: 10vw;
+  min-height: 70vh;
+  margin: 0 auto;
+}
+
+.game-board {
+  justify-items: stretch;
+  min-height: 30vh;
+}
+.game-info {
+  justify-items: stretch;
   text-align: center;
+  padding-top: 5vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.board-row {
+  display: flex;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.square {
+  display: inline-block;
+  width: 10vh;
+  height: 10vh;
+  font-size: 5vh;
+  font-family: sans-serif;
+  font-weight: bolder;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #1f2937;
+  background-color: white;
+  color: #1f2937;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.div-in-square {
+  margin-top: 2vh;
+}
+.footer {
+  height: 100%;
+  tab-size: 4;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: center;
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 transparent;
+  --tw-ring-shadow: 0 0 transparent;
+  --tw-bg-opacity: 1;
+  background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+  border-bottom-width: 2px;
+  border-top-width: 1px;
+  padding-top: 0.25rem;
+  position: relative;
+  --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent),
+    var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow);
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.copyright {
+  tab-size: 4;
+  font-family: inherit;
+  line-height: inherit;
+  text-align: center;
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+  --tw-shadow: 0 0 transparent;
+  --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59, 130, 246, 0.5);
+  --tw-ring-offset-shadow: 0 0 transparent;
+  --tw-ring-shadow: 0 0 transparent;
+  --tw-border-opacity: 1;
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  border-top-width: 2px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 4rem;
+}
+
+.list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.title {
+  text-decoration: solid;
+  font-size: 10vw;
+  text-align: center;
+  background-color: #1f2937;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.link-to-portfolio {
+  color: white;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link-to-portfolio:hover {
+  text-decoration: underline;
+  color: #bfdbfe;
 }
