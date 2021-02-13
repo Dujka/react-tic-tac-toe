@@ -103,6 +103,7 @@ body {
 
 .title {
   text-decoration: solid;
+  text-transform: uppercase;
   font-size: 10vw;
   text-align: center;
   background-color: #1f2937;
