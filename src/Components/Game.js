@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Board from "./Board.js";
+import RestartButton from "./RestartButton.js";
+import UndoRedo from "./UndoRedo.js";
 
 export class Game extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ export class Game extends Component {
       stepNumber: 0,
     };
   }
+
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -22,6 +25,32 @@ export class Game extends Component {
         xIsNext: !this.state.xIsNext,
         weHaveAWinner: this.calculateWinner(squares),
         stepNumber: history.length,
+      });
+    }
+  }
+
+  restartGame() {
+    this.setState({
+      history: [{ squares: Array(9).fill(null) }],
+      xIsNext: true,
+      weHaveAWinner: null,
+      stepNumber: 0,
+    });
+  }
+
+  currentMovePlusIncrement(increment) {
+    const stepNumber = this.state.stepNumber;
+    if (
+      stepNumber + increment >= 0 &&
+      stepNumber + increment <= 9 &&
+      increment + stepNumber <= this.state.history.length - 1
+    ) {
+      const current = this.state.history[stepNumber + increment];
+      const squares = current.squares.slice();
+      this.setState({
+        stepNumber: stepNumber + increment,
+        xIsNext: (stepNumber + increment) % 2 === 0,
+        weHaveAWinner: this.calculateWinner(squares),
       });
     }
   }
@@ -72,17 +101,24 @@ export class Game extends Component {
     else status = "Next player: " + (this.state.xIsNext ? "X" : "O");
 
     const moves = history.map((step, move) => {
-      const desc = move ? "Go to move #" + move : "Go to start";
-
+      const desc = move ? "Move #" + move : "Start";
+      let className;
+      if (move == this.state.stepNumber) className = "button-active";
+      else className = "button";
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+        <div className="history-button-wrapper">
+          <li key={move}>
+            <button className={className} onClick={() => this.jumpTo(move)}>
+              {desc}
+            </button>
+          </li>
+        </div>
       );
     });
 
     return (
       <div className="game">
+        <h1 className="status">{status}</h1>
         <div className="game-board">
           <Board
             squares={current.squares}
@@ -90,7 +126,18 @@ export class Game extends Component {
           />
         </div>
         <div className="game-info">
-          <div>{status}</div>
+          <div className="controls">
+            <UndoRedo
+              increment={-1}
+              onClick={() => this.currentMovePlusIncrement(-1)}
+            />
+            <RestartButton onClick={() => this.restartGame()} />
+            <UndoRedo
+              increment={+1}
+              onClick={() => this.currentMovePlusIncrement(+1)}
+            />
+          </div>
+          <h1>Moves history</h1>
           <ul className="list">{moves}</ul>
         </div>
       </div>
