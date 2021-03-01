@@ -40,8 +40,13 @@ body {
   color: #1f2937;
 }
 
+.square:hover {
+  cursor: pointer;
+}
+
 .div-in-square {
   margin-top: 2vh;
+  user-select: none;
 }
 .footer {
   height: 100%;
